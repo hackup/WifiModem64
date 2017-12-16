@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name hackup)(type KiCad)(uri "$(KIPRJMOD)/../kicad-hackup/library/hackup.pretty")(options "")(descr ""))
+  (lib (name WifiModem64)(type KiCad)(uri "$(KIPRJMOD)/lib/WifiModem64.pretty")(options "")(descr ""))
+)
