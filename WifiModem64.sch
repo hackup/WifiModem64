@@ -870,4 +870,34 @@ Wire Wire Line
 Wire Wire Line
 	7750 3350 8000 3350
 Connection ~ 8000 3350
+$Comp
+L GND #PWR022
+U 1 1 5A3817EF
+P 9000 1400
+F 0 "#PWR022" H 9000 1150 50  0001 C CNN
+F 1 "GND" H 9000 1250 50  0000 C CNN
+F 2 "" H 9000 1400 50  0001 C CNN
+F 3 "" H 9000 1400 50  0001 C CNN
+	1    9000 1400
+	1    0    0    -1  
+$EndComp
+Text GLabel 8650 1300 0    39   Input ~ 0
+W_D8
+$Comp
+L R R9
+U 1 1 5A381890
+P 8850 1300
+F 0 "R9" V 8930 1300 50  0000 C CNN
+F 1 "3k3" V 8850 1300 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 8780 1300 50  0001 C CNN
+F 3 "" H 8850 1300 50  0001 C CNN
+	1    8850 1300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8650 1300 8700 1300
+Wire Wire Line
+	9000 1300 9000 1400
+Text Notes 8050 1200 0    39   ~ 0
+Pull-Down Resitor for ESP8266 GPIO15
 $EndSCHEMATC
