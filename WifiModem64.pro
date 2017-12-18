@@ -1,4 +1,4 @@
-update=06/12/2017 17:50:50
+update=18/12/2017 09:52:53
 version=1
 last_client=kicad
 [pcbnew]
@@ -27,7 +27,7 @@ NetIExt=net
 version=1
 [eeschema]
 version=1
-LibDir=../kicad-hackup/library;lib
+LibDir=../kicad;../kicad-hackup/library;lib
 [eeschema/libraries]
 LibName1=power
 LibName2=device

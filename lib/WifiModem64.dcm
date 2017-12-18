@@ -1,5 +1,10 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP WS2812B
+D RGB LED with integrated controller
+K LED, RGB, intelligent
+$ENDCMP
+#
 $CMP WeMos_mini
 D WeMos D1 mini
 K esp8266, wemos
