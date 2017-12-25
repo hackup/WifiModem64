@@ -1,6 +1,40 @@
-EESchema Schematic File Version 4
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:switches
+LIBS:relays
+LIBS:motors
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:hackup
+LIBS:WifiModem64
 LIBS:WifiModem64-cache
-EELAYER 26 0
+EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -15,7 +49,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L hackup:C64-UserPort J1
+L C64-UserPort J1
 U 1 1 5A216E9D
 P 6050 4350
 F 0 "J1" H 6050 3900 60  0000 C CNN
@@ -26,7 +60,7 @@ F 3 "" H 6050 3500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L WifiModem64:WeMos_mini U1
+L WeMos_mini U1
 U 1 1 5A28211F
 P 3200 1800
 F 0 "U1" H 3200 2300 60  0000 C CNN
@@ -37,7 +71,7 @@ F 3 "" H 3750 1100 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR01
+L GND #PWR01
 U 1 1 5A2822E0
 P 5400 4600
 F 0 "#PWR01" H 5400 4350 50  0001 C CNN
@@ -48,7 +82,7 @@ F 3 "" H 5400 4600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR02
+L +5V #PWR02
 U 1 1 5A282331
 P 2600 1400
 F 0 "#PWR02" H 2600 1250 50  0001 C CNN
@@ -59,7 +93,7 @@ F 3 "" H 2600 1400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR03
+L GND #PWR03
 U 1 1 5A282352
 P 2350 1600
 F 0 "#PWR03" H 2350 1350 50  0001 C CNN
@@ -70,7 +104,7 @@ F 3 "" H 2350 1600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L WifiModem64:WeMos_D1_mini_OLED_Shield U2
+L WeMos_D1_mini_OLED_Shield U2
 U 1 1 5A291CF1
 P 5250 1800
 F 0 "U2" H 5250 2300 60  0000 C CNN
@@ -145,7 +179,7 @@ SP1
 Text GLabel 6700 3850 2    39   Input ~ 0
 SP1
 $Comp
-L power:GND #PWR04
+L GND #PWR04
 U 1 1 5A292D50
 P 5450 3300
 F 0 "#PWR04" H 5450 3050 50  0001 C CNN
@@ -156,7 +190,7 @@ F 3 "" H 5450 3300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3V3 #PWR05
+L +3V3 #PWR05
 U 1 1 5A364EDA
 P 3800 1400
 F 0 "#PWR05" H 3800 1250 50  0001 C CNN
@@ -167,7 +201,7 @@ F 3 "" H 3800 1400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3V3 #PWR06
+L +3V3 #PWR06
 U 1 1 5A36503E
 P 5850 1400
 F 0 "#PWR06" H 5850 1250 50  0001 C CNN
@@ -178,7 +212,7 @@ F 3 "" H 5850 1400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR07
+L +5V #PWR07
 U 1 1 5A365155
 P 4650 1400
 F 0 "#PWR07" H 4650 1250 50  0001 C CNN
@@ -189,7 +223,7 @@ F 3 "" H 4650 1400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR08
+L GND #PWR08
 U 1 1 5A36519A
 P 4400 1600
 F 0 "#PWR08" H 4400 1350 50  0001 C CNN
@@ -200,7 +234,7 @@ F 3 "" H 4400 1600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:Jumper_NC_Small JP5
+L Jumper_NC_Small JP5
 U 1 1 5A365277
 P 9900 6000
 F 0 "JP5" H 9900 6080 50  0000 C CNN
@@ -215,7 +249,7 @@ SP2
 Text GLabel 10350 6000 2    39   Input ~ 0
 W_TX
 $Comp
-L transistors:BSS138 Q4
+L BSS138 Q4
 U 1 1 5A3653EB
 P 10000 5550
 F 0 "Q4" V 9900 5450 50  0000 L CNN
@@ -226,7 +260,7 @@ F 3 "" H 10000 5550 50  0001 L CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L device:R R4
+L R R4
 U 1 1 5A3654A2
 P 9750 5500
 F 0 "R4" V 9830 5500 50  0000 C CNN
@@ -237,7 +271,7 @@ F 3 "" H 9750 5500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:R R8
+L R R8
 U 1 1 5A365525
 P 10250 5500
 F 0 "R8" V 10330 5500 50  0000 C CNN
@@ -248,7 +282,7 @@ F 3 "" H 10250 5500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3V3 #PWR09
+L +3V3 #PWR09
 U 1 1 5A3655FB
 P 9750 5300
 F 0 "#PWR09" H 9750 5150 50  0001 C CNN
@@ -259,7 +293,7 @@ F 3 "" H 9750 5300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR010
+L +5V #PWR010
 U 1 1 5A36561F
 P 10250 5300
 F 0 "#PWR010" H 10250 5150 50  0001 C CNN
@@ -270,7 +304,7 @@ F 3 "" H 10250 5300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:Jumper_NC_Small JP4
+L Jumper_NC_Small JP4
 U 1 1 5A365F67
 P 9900 4950
 F 0 "JP4" H 9900 5030 50  0000 C CNN
@@ -285,7 +319,7 @@ SP1
 Text GLabel 10350 4950 2    39   Input ~ 0
 W_RX
 $Comp
-L transistors:BSS138 Q3
+L BSS138 Q3
 U 1 1 5A365F71
 P 10000 4500
 F 0 "Q3" V 9900 4400 50  0000 L CNN
@@ -296,7 +330,7 @@ F 3 "" H 10000 4500 50  0001 L CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L device:R R3
+L R R3
 U 1 1 5A365F77
 P 9750 4450
 F 0 "R3" V 9830 4450 50  0000 C CNN
@@ -307,7 +341,7 @@ F 3 "" H 9750 4450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:R R7
+L R R7
 U 1 1 5A365F7D
 P 10250 4450
 F 0 "R7" V 10330 4450 50  0000 C CNN
@@ -318,7 +352,7 @@ F 3 "" H 10250 4450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3V3 #PWR011
+L +3V3 #PWR011
 U 1 1 5A365F86
 P 9750 4250
 F 0 "#PWR011" H 9750 4100 50  0001 C CNN
@@ -329,7 +363,7 @@ F 3 "" H 9750 4250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR012
+L +5V #PWR012
 U 1 1 5A365F8C
 P 10250 4250
 F 0 "#PWR012" H 10250 4100 50  0001 C CNN
@@ -340,7 +374,7 @@ F 3 "" H 10250 4250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:Jumper_NC_Small JP3
+L Jumper_NC_Small JP3
 U 1 1 5A366318
 P 9900 3900
 F 0 "JP3" H 9900 3980 50  0000 C CNN
@@ -355,7 +389,7 @@ RTS
 Text GLabel 10350 3900 2    39   Input ~ 0
 W_D8
 $Comp
-L transistors:BSS138 Q2
+L BSS138 Q2
 U 1 1 5A366322
 P 10000 3450
 F 0 "Q2" V 9900 3350 50  0000 L CNN
@@ -366,7 +400,7 @@ F 3 "" H 10000 3450 50  0001 L CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L device:R R2
+L R R2
 U 1 1 5A366328
 P 9750 3400
 F 0 "R2" V 9830 3400 50  0000 C CNN
@@ -377,7 +411,7 @@ F 3 "" H 9750 3400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:R R6
+L R R6
 U 1 1 5A36632E
 P 10250 3400
 F 0 "R6" V 10330 3400 50  0000 C CNN
@@ -388,7 +422,7 @@ F 3 "" H 10250 3400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3V3 #PWR013
+L +3V3 #PWR013
 U 1 1 5A366337
 P 9750 3200
 F 0 "#PWR013" H 9750 3050 50  0001 C CNN
@@ -399,7 +433,7 @@ F 3 "" H 9750 3200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR014
+L +5V #PWR014
 U 1 1 5A36633D
 P 10250 3200
 F 0 "#PWR014" H 10250 3050 50  0001 C CNN
@@ -410,7 +444,7 @@ F 3 "" H 10250 3200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:Jumper_NC_Small JP2
+L Jumper_NC_Small JP2
 U 1 1 5A366425
 P 9900 2850
 F 0 "JP2" H 9900 2930 50  0000 C CNN
@@ -425,7 +459,7 @@ CTS
 Text GLabel 10350 2850 2    39   Input ~ 0
 W_D6
 $Comp
-L transistors:BSS138 Q1
+L BSS138 Q1
 U 1 1 5A36642F
 P 10000 2400
 F 0 "Q1" V 9900 2300 50  0000 L CNN
@@ -436,7 +470,7 @@ F 3 "" H 10000 2400 50  0001 L CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L device:R R1
+L R R1
 U 1 1 5A366435
 P 9750 2350
 F 0 "R1" V 9830 2350 50  0000 C CNN
@@ -447,7 +481,7 @@ F 3 "" H 9750 2350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:R R5
+L R R5
 U 1 1 5A36643B
 P 10250 2350
 F 0 "R5" V 10330 2350 50  0000 C CNN
@@ -458,7 +492,7 @@ F 3 "" H 10250 2350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3V3 #PWR015
+L +3V3 #PWR015
 U 1 1 5A366444
 P 9750 2150
 F 0 "#PWR015" H 9750 2000 50  0001 C CNN
@@ -469,7 +503,7 @@ F 3 "" H 9750 2150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR016
+L +5V #PWR016
 U 1 1 5A36644A
 P 10250 2150
 F 0 "#PWR016" H 10250 2000 50  0001 C CNN
@@ -480,7 +514,7 @@ F 3 "" H 10250 2150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L switches:SW_Push SW1
+L SW_Push SW1
 U 1 1 5A3679A2
 P 10050 1200
 F 0 "SW1" H 10100 1300 50  0000 L CNN
@@ -493,7 +527,7 @@ $EndComp
 Text GLabel 9750 1200 0    39   Input ~ 0
 W_D3
 $Comp
-L power:GND #PWR017
+L GND #PWR017
 U 1 1 5A367D37
 P 10350 1550
 F 0 "#PWR017" H 10350 1300 50  0001 C CNN
@@ -504,7 +538,7 @@ F 3 "" H 10350 1550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L switches:SW_Push SW2
+L SW_Push SW2
 U 1 1 5A36803A
 P 10050 1500
 F 0 "SW2" H 10100 1600 50  0000 L CNN
@@ -517,7 +551,7 @@ $EndComp
 Wire Wire Line
 	5500 3650 5550 3650
 Wire Wire Line
-	5450 3550 5500 3550
+	5450 3550 5550 3550
 Wire Wire Line
 	5550 4350 5150 4350
 Wire Wire Line
@@ -535,7 +569,7 @@ Wire Wire Line
 Wire Wire Line
 	5400 4600 5400 4550
 Wire Wire Line
-	5400 4550 5500 4550
+	5400 4550 5550 4550
 Wire Wire Line
 	5500 3650 5500 3550
 Connection ~ 5500 3550
@@ -555,7 +589,7 @@ Connection ~ 5500 4550
 Wire Wire Line
 	6550 3300 6550 3450
 Wire Wire Line
-	5450 3300 5550 3300
+	5450 3300 6550 3300
 Wire Wire Line
 	5550 3300 5550 3450
 Connection ~ 5550 3300
@@ -584,9 +618,9 @@ Wire Wire Line
 Wire Wire Line
 	4400 1550 4400 1600
 Wire Wire Line
-	9700 6000 9750 6000
+	9700 6000 9800 6000
 Wire Wire Line
-	10000 6000 10250 6000
+	10000 6000 10350 6000
 Wire Wire Line
 	9750 5650 9800 5650
 Wire Wire Line
@@ -604,9 +638,9 @@ Wire Wire Line
 	10250 5650 10250 6000
 Connection ~ 10250 6000
 Wire Wire Line
-	9700 4950 9750 4950
+	9700 4950 9800 4950
 Wire Wire Line
-	10000 4950 10250 4950
+	10000 4950 10350 4950
 Wire Wire Line
 	9750 4600 9800 4600
 Wire Wire Line
@@ -624,9 +658,9 @@ Wire Wire Line
 	10250 4600 10250 4950
 Connection ~ 10250 4950
 Wire Wire Line
-	9700 3900 9750 3900
+	9700 3900 9800 3900
 Wire Wire Line
-	10000 3900 10250 3900
+	10000 3900 10350 3900
 Wire Wire Line
 	9750 3550 9800 3550
 Wire Wire Line
@@ -644,9 +678,9 @@ Wire Wire Line
 	10250 3550 10250 3900
 Connection ~ 10250 3900
 Wire Wire Line
-	9700 2850 9750 2850
+	9700 2850 9800 2850
 Wire Wire Line
-	10000 2850 10250 2850
+	10000 2850 10350 2850
 Wire Wire Line
 	9750 2500 9800 2500
 Wire Wire Line
@@ -668,7 +702,7 @@ Wire Wire Line
 Wire Wire Line
 	10250 1200 10350 1200
 Wire Wire Line
-	10350 1200 10350 1500
+	10350 1200 10350 1550
 Wire Wire Line
 	10250 1500 10350 1500
 Connection ~ 10350 1500
@@ -681,7 +715,7 @@ RST
 Wire Wire Line
 	6550 3650 6700 3650
 $Comp
-L power:GND #PWR018
+L GND #PWR018
 U 1 1 5A378519
 P 3800 4150
 F 0 "#PWR018" H 3800 3900 50  0001 C CNN
@@ -692,7 +726,7 @@ F 3 "" H 3800 4150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR019
+L +5V #PWR019
 U 1 1 5A37855B
 P 2500 3750
 F 0 "#PWR019" H 2500 3600 50  0001 C CNN
@@ -705,7 +739,7 @@ $EndComp
 Text GLabel 3650 3750 2    39   Input ~ 0
 W_D0
 $Comp
-L WifiModem64:WS2812B LED1
+L WS2812B LED1
 U 1 1 5A3787C4
 P 3150 3950
 F 0 "LED1" H 3150 3550 60  0000 C CNN
@@ -716,11 +750,11 @@ F 3 "" V 3100 3950 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2500 3750 2550 3750
+	2500 3750 2650 3750
 Wire Wire Line
-	3650 4150 3700 4150
+	3650 4150 3800 4150
 $Comp
-L device:C C1
+L C C1
 U 1 1 5A3799FA
 P 2550 3950
 F 0 "C1" H 2575 4050 50  0000 L CNN
@@ -741,7 +775,7 @@ Wire Wire Line
 	3700 4450 3700 4150
 Connection ~ 3700 4150
 $Comp
-L power:+5V #PWR020
+L +5V #PWR020
 U 1 1 5A37B010
 P 8000 2650
 F 0 "#PWR020" H 8000 2500 50  0001 C CNN
@@ -752,7 +786,7 @@ F 3 "" H 8000 2650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:D_Schottky D1
+L D_Schottky D1
 U 1 1 5A37B054
 P 8000 3100
 F 0 "D1" H 8000 3200 50  0000 C CNN
@@ -763,7 +797,7 @@ F 3 "" H 8000 3100 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L device:Polyfuse_Small F1
+L Polyfuse_Small F1
 U 1 1 5A37B0D5
 P 8000 2850
 F 0 "F1" V 7925 2850 50  0000 C CNN
@@ -774,7 +808,7 @@ F 3 "" H 8000 2850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:Jumper_NO_Small JP1
+L Jumper_NO_Small JP1
 U 1 1 5A37B2BB
 P 7750 2800
 F 0 "JP1" H 7750 2880 50  0000 C CNN
@@ -785,12 +819,12 @@ F 3 "" H 7750 2800 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	8000 2650 8000 2700
+	8000 2650 8000 2750
 Wire Wire Line
 	7750 2700 8000 2700
 Connection ~ 8000 2700
 $Comp
-L conn:USB_B J2
+L USB_B J2
 U 1 1 5A37B8E2
 P 7950 4200
 F 0 "J2" H 8050 3850 50  0000 L CNN
@@ -801,7 +835,7 @@ F 3 "" H 8100 4150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:Jumper_NC_Dual JP6
+L Jumper_NC_Dual JP6
 U 1 1 5A37B9D7
 P 8000 3550
 F 0 "JP6" H 8050 3450 50  0000 L CNN
@@ -812,13 +846,13 @@ F 3 "" H 8000 3550 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	8000 3450 8000 3350
+	8000 3450 8000 3250
 Wire Wire Line
 	6550 3550 7750 3550
 Wire Wire Line
 	8250 3550 8250 4000
 $Comp
-L power:GND #PWR021
+L GND #PWR021
 U 1 1 5A37BF42
 P 8250 4600
 F 0 "#PWR021" H 8250 4350 50  0001 C CNN
@@ -829,7 +863,7 @@ F 3 "" H 8250 4600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7850 4600 7950 4600
+	7850 4600 8250 4600
 Connection ~ 7950 4600
 Wire Wire Line
 	7750 2900 7750 3350
@@ -837,7 +871,7 @@ Wire Wire Line
 	7750 3350 8000 3350
 Connection ~ 8000 3350
 $Comp
-L power:GND #PWR022
+L GND #PWR022
 U 1 1 5A3817EF
 P 9000 1400
 F 0 "#PWR022" H 9000 1150 50  0001 C CNN
@@ -850,12 +884,12 @@ $EndComp
 Text GLabel 8650 1300 0    39   Input ~ 0
 W_D8
 $Comp
-L device:R R9
+L R R9
 U 1 1 5A381890
 P 8850 1300
 F 0 "R9" V 8930 1300 50  0000 C CNN
 F 1 "3k3" V 8850 1300 50  0000 C CNN
-F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 8780 1300 50  0001 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" V 8780 1300 50  0001 C CNN
 F 3 "" H 8850 1300 50  0001 C CNN
 	1    8850 1300
 	0    1    1    0   
@@ -866,38 +900,4 @@ Wire Wire Line
 	9000 1300 9000 1400
 Text Notes 8050 1200 0    39   ~ 0
 Pull-Down Resitor for ESP8266 GPIO15
-Wire Wire Line
-	5500 3550 5550 3550
-Wire Wire Line
-	5500 4550 5550 4550
-Wire Wire Line
-	5550 3300 6550 3300
-Wire Wire Line
-	9750 6000 9800 6000
-Wire Wire Line
-	10250 6000 10350 6000
-Wire Wire Line
-	9750 4950 9800 4950
-Wire Wire Line
-	10250 4950 10350 4950
-Wire Wire Line
-	9750 3900 9800 3900
-Wire Wire Line
-	10250 3900 10350 3900
-Wire Wire Line
-	9750 2850 9800 2850
-Wire Wire Line
-	10250 2850 10350 2850
-Wire Wire Line
-	10350 1500 10350 1550
-Wire Wire Line
-	2550 3750 2650 3750
-Wire Wire Line
-	3700 4150 3800 4150
-Wire Wire Line
-	8000 2700 8000 2750
-Wire Wire Line
-	7950 4600 8250 4600
-Wire Wire Line
-	8000 3350 8000 3250
 $EndSCHEMATC
