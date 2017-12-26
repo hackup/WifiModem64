@@ -703,7 +703,7 @@ F 3 "" H 2500 3750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 3650 3750 2    39   Input ~ 0
-W_D0
+W_D5
 $Comp
 L WifiModem64:WS2812B LED1
 U 1 1 5A3787C4

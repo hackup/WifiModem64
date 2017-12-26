@@ -34,6 +34,8 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include "Adafruit_SSD1306.h"
+#include <Adafruit_NeoPixel.h>
+
 
 // SCL GPIO5
 // SDA GPIO4
@@ -123,11 +125,11 @@ static unsigned char ascToPetTable[256] = {
 #define LED_PIN LED_BUILTIN          // Status LED
 #define DCD_PIN D4          // DCD Carrier Status
 #define CTS_PIN D6 //D1         // CTS Clear to Send, connect to host's RTS pin
-#define RTS_PIN D8 //D2         // RTS Request to Send, connect to host's CTS pin
+#define RTS_PIN D7 //D2         // RTS Request to Send, connect to host's CTS pin
+#define PIXEL_PIN D5
 
 // Global variables
-//String build = "20160621182048";
-String build = "20171214000000";
+String build = "20171226000000";
 String cmd = "";           // Gather a new AT command to this string from serial
 bool cmdMode = true;       // Are we in AT command mode or connected mode
 bool callConnected = false;// Are we currently in a call
@@ -179,6 +181,9 @@ WiFiServer tcpServer(tcpServerPort);
 ESP8266WebServer webServer(80);
 MDNSResponder mdns;
 
+Adafruit_NeoPixel pixel = Adafruit_NeoPixel(1, PIXEL_PIN, NEO_GRB + NEO_KHZ800);
+
+
 void updateDisplay() {
   display.clearDisplay();
 
@@ -187,7 +192,7 @@ void updateDisplay() {
   display.setCursor(0, 0);
   display.println(ssid);
   String status = getNetworkStatus();
-  display.println(status.substring(0,8));
+  display.println(status.substring(0,9));
 
   display.drawLine(0, 17, display.width()-1, 17, WHITE);
 
@@ -642,6 +647,10 @@ void welcome() {
    Arduino main init function
 */
 void setup() {
+  pixel.begin(); // This initializes the NeoPixel library.
+  pixel.setPixelColor(0, pixel.Color(0,0,5));
+  pixel.show();
+
   pinMode(LED_PIN, OUTPUT);
   digitalWrite(LED_PIN, HIGH); // off
   pinMode(SWITCH_PIN, INPUT);
@@ -669,8 +678,7 @@ void setup() {
   }
 
   Serial.begin(bauds[serialspeed]);
-
-  delay(500);
+  
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C); // initialize with the I2C addr 0x3C (for the 64x48)
   updateDisplay();
 
