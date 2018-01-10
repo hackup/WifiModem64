@@ -107,6 +107,7 @@ static unsigned char ascToPetTable[256] = {
 #define PET_TRANSLATE_ADDRESS 118
 #define FLOW_CONTROL_ADDRESS 119
 #define PIN_POLARITY_ADDRESS 120
+#define LED_MASK_ADDRESS 130
 #define DIAL0_ADDRESS   200
 #define DIAL1_ADDRESS   250
 #define DIAL2_ADDRESS   300
@@ -169,6 +170,9 @@ byte flowControl = F_NONE;      // Use flow control
 bool txPaused = false;          // Has flow control asked us to pause?
 enum pinPolarity_t { P_INVERTED, P_NORMAL }; // Is LOW (0) or HIGH (1) active?
 byte pinPolarity = P_INVERTED;
+#define LED_WEMOS 0x01
+#define LED_RGB 0x02
+byte ledMask = LED_WEMOS;
 
 // Telnet codes
 #define DO 0xfd
@@ -232,6 +236,7 @@ void writeSettings() {
   EEPROM.write(SERVER_PORT_ADDRESS + 1, lowByte(tcpServerPort));
   EEPROM.write(TELNET_ADDRESS, byte(telnet));
   EEPROM.write(VERBOSE_ADDRESS, byte(verboseResults));
+  EEPROM.write(LED_MASK_ADDRESS, ledMask);
   EEPROM.write(PET_TRANSLATE_ADDRESS, byte(petTranslate));
   EEPROM.write(FLOW_CONTROL_ADDRESS, byte(flowControl));
   EEPROM.write(PIN_POLARITY_ADDRESS, byte(pinPolarity));
@@ -253,6 +258,7 @@ void readSettings() {
   tcpServerPort = word(EEPROM.read(SERVER_PORT_ADDRESS), EEPROM.read(SERVER_PORT_ADDRESS + 1));
   telnet = EEPROM.read(TELNET_ADDRESS);
   verboseResults = EEPROM.read(VERBOSE_ADDRESS);
+  ledMask = EEPROM.read(LED_MASK_ADDRESS);
   petTranslate = EEPROM.read(PET_TRANSLATE_ADDRESS);
   flowControl = EEPROM.read(FLOW_CONTROL_ADDRESS);
   pinPolarity = EEPROM.read(PIN_POLARITY_ADDRESS);
@@ -277,6 +283,7 @@ void defaultEEPROM() {
   EEPROM.write(AUTO_ANSWER_ADDRESS, 0x01);
   EEPROM.write(TELNET_ADDRESS, 0x00);
   EEPROM.write(VERBOSE_ADDRESS, 0x01);
+  EEPROM.write(LED_MASK_ADDRESS, LED_WEMOS);
   EEPROM.write(PET_TRANSLATE_ADDRESS, 0x00);
   EEPROM.write(FLOW_CONTROL_ADDRESS, 0x00);
   EEPROM.write(PIN_POLARITY_ADDRESS, 0x01);
@@ -544,6 +551,7 @@ void displayCurrentSettings() {
   Serial.print("BUSY MSG: "); Serial.println(busyMsg); yield();
   Serial.print("E"); Serial.print(echo); Serial.print(" "); yield();
   Serial.print("V"); Serial.print(verboseResults); Serial.print(" "); yield();
+  Serial.print("LED"); Serial.print(ledMask); Serial.print(" "); yield();
   Serial.print("&K"); Serial.print(flowControl); Serial.print(" "); yield();
   Serial.print("&P"); Serial.print(pinPolarity); Serial.print(" "); yield();
   Serial.print("NET"); Serial.print(telnet); Serial.print(" "); yield();
@@ -568,6 +576,7 @@ void displayStoredSettings() {
   Serial.print("BUSY MSG: "); Serial.println(getEEPROM(BUSY_MSG_ADDRESS, BUSY_MSG_LEN)); yield();
   Serial.print("E"); Serial.print(EEPROM.read(ECHO_ADDRESS)); Serial.print(" "); yield();
   Serial.print("V"); Serial.print(EEPROM.read(VERBOSE_ADDRESS)); Serial.print(" "); yield();
+  Serial.print("LED"); Serial.print(EEPROM.read(LED_MASK_ADDRESS)); Serial.print(" "); yield();
   Serial.print("&K"); Serial.print(EEPROM.read(FLOW_CONTROL_ADDRESS)); Serial.print(" "); yield();
   Serial.print("&P"); Serial.print(EEPROM.read(PIN_POLARITY_ADDRESS)); Serial.print(" "); yield();
   Serial.print("NET"); Serial.print(EEPROM.read(TELNET_ADDRESS)); Serial.print(" "); yield();
@@ -617,11 +626,12 @@ void displayHelp() {
   Serial.println("PIN POLARITY..: AT&PN (N=0/INV,1/NORM)"); yield();
   Serial.println("ECHO OFF/ON...: ATE0 / ATE1"); yield();
   Serial.println("VERBOSE OFF/ON: ATV0 / ATV1"); yield();
+  Serial.println("LED MASK......: AT$LED=MASK"); yield();
   Serial.println("SET SSID......: AT$SSID=WIFISSID"); yield();
   Serial.println("SET PASSWORD..: AT$PASS=WIFIPASSWORD"); yield();
+  waitForSpace();
   Serial.println("SET BAUD RATE.: AT$SB=N (3,12,24,48,96"); yield();
   Serial.println("                192,384,576,1152)*100"); yield();
-  waitForSpace();
   Serial.println("FLOW CONTROL..: AT&KN (N=0/N,1/HW,2/SW)"); yield();
   Serial.println("WIFI OFF/ON...: ATC0 / ATC1"); yield();
   Serial.println("HANGUP........: ATH"); yield();
@@ -1086,6 +1096,17 @@ void command()
   /**** Set busy message ****/
   else if (upCmd.indexOf("AT$BM=") == 0) {
     busyMsg = cmd.substring(6);
+    sendResult(R_OK);
+  }
+
+  /**** Display current LED mask ****/
+  else if (upCmd.indexOf("AT$LED?") == 0) {
+    sendString(String(ledMask));
+  }
+
+  /**** Set LED mask ****/
+  else if (upCmd.indexOf("AT$LED=") == 0) {
+    ledMask = cmd.substring(7).toInt();
     sendResult(R_OK);
   }
 
