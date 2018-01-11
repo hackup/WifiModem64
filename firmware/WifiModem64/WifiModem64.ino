@@ -1,4 +1,8 @@
 /*
+   WifiModem64 Firmware
+   https://github.com/hackup/WifiModem64
+   
+   based on
    WiFi SIXFOUR - A virtual WiFi modem based on the ESP 8266 chipset
    Copyright (C) 2016 Paul Rickards <rickards@gmail.com>
    Added EEPROM read/write, status/help pages, busy answering of incoming calls
@@ -123,14 +127,14 @@ static unsigned char ascToPetTable[256] = {
 #define LAST_ADDRESS    780
 
 #define SWITCH_PIN D3       // GPIO0 (programmind mode pin)
-#define LED_PIN LED_BUILTIN          // Status LED
+#define LED_PIN LED_BUILTIN // Default Status LED
 #define DCD_PIN D4          // DCD Carrier Status
-#define CTS_PIN D6 //D1         // CTS Clear to Send, connect to host's RTS pin
-#define RTS_PIN D7 //D2         // RTS Request to Send, connect to host's CTS pin
-#define PIXEL_PIN D5
+#define CTS_PIN D6          // CTS Clear to Send, connect to host's RTS pin
+#define RTS_PIN D7          // RTS Request to Send, connect to host's CTS pin
+#define PIXEL_PIN D5        // Optional RGB Status LED
 
 // Global variables
-String build = "20171226000000";
+String build = "20180110232400";
 String cmd = "";           // Gather a new AT command to this string from serial
 bool cmdMode = true;       // Are we in AT command mode or connected mode
 bool callConnected = false;// Are we currently in a call
@@ -648,7 +652,10 @@ void storeSpeedDial(byte num, String location) {
 
 void welcome() {
   Serial.println();
-  Serial.println("WIFI SIXFOUR BUILD " + build + " BY @PAULRICKARDS");
+  Serial.println("WIFIMODEM64 firmware BUILD " + build);
+  Serial.println("  GITHUB.COM/HACKUP/WIFIMODEM64");
+  yield();
+  Serial.println("BASED ON WIFI SIXFOUR BY @PAULRICKARDS");
   Serial.println("BASED ON GITHUB.COM/JSALIN/ESP8266_MODEM");
 }
 
