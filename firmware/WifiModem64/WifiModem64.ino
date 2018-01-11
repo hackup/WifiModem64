@@ -134,7 +134,7 @@ static unsigned char ascToPetTable[256] = {
 #define PIXEL_PIN D5        // Optional RGB Status LED
 
 // Global variables
-String build = "20180110232400";
+String build = "20180111-01";
 String cmd = "";           // Gather a new AT command to this string from serial
 bool cmdMode = true;       // Are we in AT command mode or connected mode
 bool callConnected = false;// Are we currently in a call
@@ -176,7 +176,7 @@ enum pinPolarity_t { P_INVERTED, P_NORMAL }; // Is LOW (0) or HIGH (1) active?
 byte pinPolarity = P_INVERTED;
 #define LED_WEMOS 0x01
 #define LED_RGB 0x02
-byte ledMask = LED_WEMOS;
+byte ledMask = 0xff;
 
 // Telnet codes
 #define DO 0xfd
@@ -287,7 +287,7 @@ void defaultEEPROM() {
   EEPROM.write(AUTO_ANSWER_ADDRESS, 0x01);
   EEPROM.write(TELNET_ADDRESS, 0x00);
   EEPROM.write(VERBOSE_ADDRESS, 0x01);
-  EEPROM.write(LED_MASK_ADDRESS, LED_WEMOS);
+  EEPROM.write(LED_MASK_ADDRESS, 0xff);
   EEPROM.write(PET_TRANSLATE_ADDRESS, 0x00);
   EEPROM.write(FLOW_CONTROL_ADDRESS, 0x00);
   EEPROM.write(PIN_POLARITY_ADDRESS, 0x01);
@@ -652,7 +652,7 @@ void storeSpeedDial(byte num, String location) {
 
 void welcome() {
   Serial.println();
-  Serial.println("WIFIMODEM64 firmware BUILD " + build);
+  Serial.println("wIFImODEM64 fIRMWARE BUILD " + build);
   Serial.println("  GITHUB.COM/HACKUP/WIFIMODEM64");
   yield();
   Serial.println("BASED ON WIFI SIXFOUR BY @PAULRICKARDS");
