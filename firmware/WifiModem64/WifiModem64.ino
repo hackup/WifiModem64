@@ -134,7 +134,7 @@ static unsigned char ascToPetTable[256] = {
 #define PIXEL_PIN D5        // Optional RGB Status LED
 
 // Global variables
-String build = "20180111-01";
+String build = "20180425-01";
 String cmd = "";           // Gather a new AT command to this string from serial
 bool cmdMode = true;       // Are we in AT command mode or connected mode
 bool callConnected = false;// Are we currently in a call
@@ -194,6 +194,8 @@ Adafruit_NeoPixel pixel = Adafruit_NeoPixel(1, PIXEL_PIN, NEO_GRB + NEO_KHZ800);
 
 void updateDisplay() {
   display.clearDisplay();
+
+  ESP.wdtFeed();
 
   display.setTextSize(1);
   display.setTextColor(WHITE);
@@ -718,9 +720,11 @@ void setup() {
     //startMillis = millis();
     //}
     yield();
+    ESP.wdtFeed();
   }
 
   welcome();
+  ESP.wdtFeed();
 
   if (tcpServerPort > 0) tcpServer.begin();
 
@@ -1369,6 +1373,8 @@ void handleFlowControl() {
 */
 void loop()
 {
+  ESP.wdtFeed();
+
   // Check flow control
   handleFlowControl();
 
